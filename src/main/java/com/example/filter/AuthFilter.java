@@ -14,9 +14,10 @@ import java.io.IOException;
 )
 public class AuthFilter implements Filter {
 
+    @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
-        Object user = request.getAttribute("user");
+        Object user = request.getServletContext().getAttribute("user");
         if (user == null) {
             request.getRequestDispatcher("/login.jsp").forward(request, response);
         } else {

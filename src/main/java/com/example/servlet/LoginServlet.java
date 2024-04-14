@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
         boolean correctPassword = password != null && !password.isEmpty();
 
         if (correctLogin && correctPassword) {
-            req.setAttribute("user", login);
+            req.getSession().setAttribute("user", login);
             req.getRequestDispatcher("/user/hello.jsp").forward(req, resp);
         } else {
             req.getRequestDispatcher("/login.jsp").forward(req, resp);
